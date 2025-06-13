@@ -6,10 +6,8 @@ export default function ClubDetailPage() {
   const { clubId } = useParams();
   const club = clubs.find(c => c.id === clubId);
 
-  // State untuk melacak status keanggotaan
   const [isJoined, setIsJoined] = useState(false);
 
-  // Cek localStorage saat komponen dimuat
   useEffect(() => {
     const joinedClubs = JSON.parse(localStorage.getItem('joinedClubs')) || [];
     if (joinedClubs.includes(clubId)) {
@@ -29,33 +27,54 @@ export default function ClubDetailPage() {
 
   if (!club) {
     return (
-        <div className="text-center p-8">
-            <h1 className="text-2xl font-bold">Club not found!</h1>
-            <Link to="/clubs" className="text-blue-600 hover:underline mt-4 inline-block">Back to Clubs</Link>
-        </div>
-    )
+      <div className="min-h-screen flex flex-col items-center justify-center text-white">
+        <h1 className="text-2xl font-bold">Club not found!</h1>
+        <Link to="/clubs" className="text-blue-400 hover:underline mt-4 inline-block">
+          Back to Clubs
+        </Link>
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">{club.name}</h1>
-      <img src={club.image} alt={club.name} className="w-full h-96 object-cover rounded-lg mb-4" />
-      <p className="text-lg mb-6">{club.description}</p>
+    // Kontainer utama untuk memberikan padding atas dan tema gelap
+    <div className="bg-gray-900 min-h-screen pt-24 pb-12">
+      <div className="container mx-auto px-4">
 
-      <h2 className="text-2xl font-semibold mb-3">Upcoming Events</h2>
-      <ul className="list-disc list-inside mb-6">
-        {club.events.map(event => (
-          <li key={event.name}>{event.name} - {new Date(event.date).toLocaleDateString()}</li>
-        ))}
-      </ul>
+        {/* Tombol Kembali */}
+        <Link to="/clubs" className="text-blue-400 hover:underline mb-6 inline-block">
+          &larr; Back to All Clubs
+        </Link>
 
-      {isJoined ? (
-        <p className="font-bold text-green-600">You have joined this club!</p> // Pesan jika sudah bergabung 
-      ) : (
-        <button onClick={handleJoin} className="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700">
-          Join Club
-        </button> // Tombol untuk bergabung 
-      )}
+        {/* Gambar dengan ukuran yang terkontrol */}
+        <img src={club.image} alt={club.name} className="w-full max-h-96 object-cover rounded-lg mb-6 shadow-lg" />
+
+        {/* Warna Teks Disesuaikan */}
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{club.name}</h1>
+        <p className="text-lg text-gray-300 mb-8">{club.description}</p>
+        
+        <h2 className="text-3xl font-semibold text-white mb-4">Upcoming Events</h2>
+        <ul className="list-disc list-inside mb-8 space-y-2">
+          {club.events.map(event => (
+            <li key={event.name} className="text-gray-300">
+              <span className="font-semibold text-white">{event.name}</span> - {new Date(event.date).toLocaleDateString()}
+            </li>
+          ))}
+        </ul>
+
+        {/* Tombol Join Club */}
+        {isJoined ? (
+          <p className="font-bold text-green-400 text-lg">You have joined this club!</p>
+        ) : (
+          <button 
+            onClick={handleJoin} 
+            className="bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition-colors"
+          >
+            Join Club
+          </button>
+        )}
+        
+      </div>
     </div>
   );
 }

@@ -1,17 +1,38 @@
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
-  const activeLinkStyle = {
-    textDecoration: 'underline',
-    color: '#2563eb' // Contoh warna biru
-  };
+  const linkClasses = "text-lg font-medium text-white hover:text-blue-300 transition-colors duration-200";
+  const activeLinkClasses = "underline text-blue-300";
 
   return (
-    <nav className="p-4 bg-gray-100 shadow-md">
+    // HAPUS bg-gray-100 dan shadow-md agar transparan
+    // TAMBAHKAN z-10 agar navbar selalu di atas elemen lain
+    <nav className="p-4 absolute top-0 left-0 right-0 z-10">
       <ul className="flex space-x-8 justify-center">
-        <li><NavLink to="/" style={({ isActive }) => isActive ? activeLinkStyle : undefined}>Home</NavLink></li>
-        <li><NavLink to="/clubs" style={({ isActive }) => isActive ? activeLinkStyle : undefined}>Clubs</NavLink></li>
-        <li><NavLink to="/about" style={({ isActive }) => isActive ? activeLinkStyle : undefined}>About</NavLink></li>
+        <li>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : ''}`}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/clubs" 
+            className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : ''}`}
+          >
+            Clubs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => `${linkClasses} ${isActive ? activeLinkClasses : ''}`}
+          >
+            About
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
