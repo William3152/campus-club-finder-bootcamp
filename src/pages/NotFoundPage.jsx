@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 export default function NotFoundPage() {
   return (
-    // Kontainer utama untuk menengahkan konten di tengah layar
     <div className="min-h-screen flex flex-col items-center justify-center text-center p-4 bg-gray-900">
       
       {/* Konten Halaman */}

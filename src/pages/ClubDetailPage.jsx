@@ -37,7 +37,6 @@ export default function ClubDetailPage() {
   }
 
   return (
-    // Kontainer utama untuk memberikan padding atas dan tema gelap
     <div className="bg-gray-900 min-h-screen pt-24 pb-12">
       <div className="container mx-auto px-4">
 
@@ -46,10 +45,8 @@ export default function ClubDetailPage() {
           &larr; Back to All Clubs
         </Link>
 
-        {/* Gambar dengan ukuran yang terkontrol */}
         <img src={club.image} alt={club.name} className="w-full max-h-96 object-cover rounded-lg mb-6 shadow-lg" />
 
-        {/* Warna Teks Disesuaikan */}
         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{club.name}</h1>
         <p className="text-lg text-gray-300 mb-8">{club.description}</p>
         

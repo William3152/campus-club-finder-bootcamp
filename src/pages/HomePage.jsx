@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    // KELAS BARU DITAMBAHKAN DI SINI: bg-gray-900
     <div className="min-h-screen flex flex-col items-center justify-center text-center p-4 bg-gray-900">
 
       <div className="max-w-2xl">
@@ -13,7 +12,7 @@ export default function HomePage() {
         <img
           src="/images/ClubImage.png"
           alt="Ilustrasi mahasiswa yang berkolaborasi"
-          className="mt-8 mb-6 w-full max-w-lg mx-auto" // <-- Kelas untuk styling ukuran dan jarak
+          className="mt-8 mb-6 w-full max-w-lg mx-auto"
         />
 
         <p className="mt-4 text-lg md:text-xl text-gray-300">

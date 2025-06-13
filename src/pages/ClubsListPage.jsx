@@ -3,8 +3,8 @@ import { clubs as initialClubs } from '../data/clubs';
 import ClubCard from '../components/ClubCard';
 
 export default function ClubsListPage() {
-  const [view, setView] = useState('grid'); // 'grid' or 'list'
-  const [sortType, setSortType] = useState('name-az'); // 'name-az', 'name-za'
+  const [view, setView] = useState('grid');
+  const [sortType, setSortType] = useState('name-az');
 
   const sortedClubs = useMemo(() => {
     const sorted = [...initialClubs];
@@ -16,15 +16,12 @@ export default function ClubsListPage() {
     return sorted;
   }, [sortType]);
 
-  // Kontainer utama dengan padding atas dan lebar yang dibatasi
   return (
     <div className="bg-gray-900 min-h-screen pt-24 pb-12">
       <div className="container mx-auto px-4">
 
-        {/* Bagian Kontrol (Sorting dan View Toggle) */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
           
-          {/* Styling untuk kontrol agar sesuai tema gelap */}
           <div className="flex items-center gap-2">
             <label htmlFor="sort" className="text-white font-medium">Sort by:</label>
             <select 

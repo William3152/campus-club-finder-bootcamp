@@ -1,6 +1,5 @@
-// src/App.jsx
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar'; // Akan kita buat selanjutnya
+import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ClubsListPage from './pages/ClubsListPage';
 import ClubDetailPage from './pages/ClubDetailPage';
